@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions">
+      <HintPath>packages\FluentAssertions.2.2.0.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
     <Reference Include="FluentAsserts">
       <HintPath>packages\FluentAsserts.1.0\lib\net40\FluentAsserts.dll</HintPath>
     </Reference>

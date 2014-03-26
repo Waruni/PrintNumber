@@ -6,3 +6,6 @@ C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\nunit.framewor
 C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\obj\Debug\PrintNumber.csprojResolveAssemblyReference.cache
 C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\obj\Debug\PrintNumber.dll
 C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\obj\Debug\PrintNumber.pdb
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\FluentAssertions.dll
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\FluentAssertions.pdb
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\FluentAssertions.xml
