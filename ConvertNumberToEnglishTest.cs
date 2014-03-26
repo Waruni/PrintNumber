@@ -11,6 +11,10 @@ namespace PrintNumber
 {
     public class ConvertNumberToEnglishTest
     {
+        readonly string[] _numbersUpTo19 = new[] { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+        readonly string[] _numbersFromTen = new[] { "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+
+
         [TestCase(1)]
         public void Convert1ToOneTest(int number)
         {
@@ -73,20 +77,40 @@ namespace PrintNumber
             ToEnglish(number).Should().Be("five hundred and fifty six");
         }
 
+        [TestCase(7000)]
+        public void Convert7000ToSevenThousandTest(int number)
+        {
+            ToEnglish(number).Should().Be("seven thousand ");
+        }
+
+        [TestCase(11812)]
+        public void Convert11812ToElevenThousandEightHundredAndTwelveTest(int number)
+        {
+            ToEnglish(number).Should().Be("eleven thousand eight hundred and twelve");
+        }
+
+        [TestCase(13014)]
+        public void Convert13014ToThirteenThousandAndFourteenTest(int number)
+        {
+            ToEnglish(number).Should().Be("thirteen thousand  and fourteen");
+        }
 
         private string ToEnglish(int number)
         {
-            string text = ""; 
-            
-            var numbersUpTo19 = new[] {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
-            var numbersFromTen = new[] {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"  };
+            string text = "";  
+
+            if ((number / 1000) > 0)
+            {
+                text += ToEnglish(number / 1000) + " thousand ";
+                number = number % 1000;
+            }
 
             if ((number / 100) > 0)
             {
                 text += ToEnglish(number / 100) + " hundred";
                 number  = number % 100;
             }
-
+            
             if (number > 0)
             {
                 if (text != "")
@@ -94,19 +118,25 @@ namespace PrintNumber
                     text += " and ";
                 }
 
-                if (number < 20)
-                {
-                    text += numbersUpTo19[number - 1];
-                }
-                else
-                {
-                    text += numbersFromTen[number/10];
+                text = NumberLessThan100(number, text);
+            }
+            return text;
+        }
 
-                    int remain = number % 10;
+        private string NumberLessThan100(int number, string text)
+        {
+            if (number < 20)
+            {
+                text += _numbersUpTo19[number - 1];
+            }
+            else
+            {
+                text += _numbersFromTen[number/10];
 
-                    if (remain > 0)
-                        text += " " + numbersUpTo19[remain - 1];
-                }
+                int remain = number%10;
+
+                if (remain > 0)
+                    text += " " + _numbersUpTo19[remain - 1];
             }
             return text;
         }
