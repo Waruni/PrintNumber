@@ -1,0 +1,8 @@
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\PrintNumber.dll
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\PrintNumber.pdb
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\FluentAsserts.dll
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\nunit.framework.dll
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\bin\Debug\nunit.framework.xml
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\obj\Debug\PrintNumber.csprojResolveAssemblyReference.cache
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\obj\Debug\PrintNumber.dll
+C:\git_tutorial\work\EnglishNumberConverter\PrintNumber\obj\Debug\PrintNumber.pdb
