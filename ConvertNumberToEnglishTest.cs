@@ -33,18 +33,6 @@ namespace PrintNumber
             ToEnglish(number).Should().Be(text);
         }
         
-        [TestCase(11812)]
-        public void Convert11812ToElevenThousandEightHundredAndTwelveTest(int number)
-        {
-            ToEnglish(number).Should().Be("eleven thousand eight hundred and twelve");
-        }
-
-        [TestCase(13014)]
-        public void Convert13014ToThirteenThousandAndFourteenTest(int number)
-        {
-            ToEnglish(number).Should().Be("thirteen thousand  and fourteen");
-        }
-
         private string ToEnglish(int number)
         {
             string text = "";
