@@ -54,27 +54,60 @@ namespace PrintNumber
             ToEnglish(number).Should().Be("thirty five");
         }
 
+        [TestCase(100)]
+        public void Convert100ToOneHundredTest(int number)
+        {
+            ToEnglish(number).Should().Be("one hundred");
+        }
+
+        [TestCase(110)]
+        public void Convert110ToOneHundredAndTenTest(int number)
+        {
+            ToEnglish(number).Should().Be("one hundred and ten");
+        }
+
+
+        [TestCase(556)]
+        public void Convert556ToFiveHundredAndFiftySixTest(int number)
+        {
+            ToEnglish(number).Should().Be("five hundred and fifty six");
+        }
+
+
         private string ToEnglish(int number)
         {
             string text = ""; 
             
-            var numbersUpTo19 = new[] { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+            var numbersUpTo19 = new[] {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
             var numbersFromTen = new[] {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"  };
 
-            if (number < 20)
+            if ((number / 100) > 0)
             {
-                text = numbersUpTo19[number - 1];
-            }
-            else
-            {
-                text += numbersFromTen[number/10];
-
-                int remain = number % 10;
-
-                if (remain > 0)
-                    text += " " +  numbersUpTo19[remain - 1];
+                text += ToEnglish(number / 100) + " hundred";
+                number  = number % 100;
             }
 
+            if (number > 0)
+            {
+                if (text != "")
+                {
+                    text += " and ";
+                }
+
+                if (number < 20)
+                {
+                    text += numbersUpTo19[number - 1];
+                }
+                else
+                {
+                    text += numbersFromTen[number/10];
+
+                    int remain = number % 10;
+
+                    if (remain > 0)
+                        text += " " + numbersUpTo19[remain - 1];
+                }
+            }
             return text;
         }
     }
