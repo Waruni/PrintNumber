@@ -29,22 +29,52 @@ namespace PrintNumber
             ToEnglish(number).Should().Be("three");
         }
 
+        [TestCase(20)]
+        public void Convert20ToTwentyTest(int number)
+        {
+            ToEnglish(number).Should().Be("twenty");
+        }
+
+        [TestCase(21)]
+        public void Convert21ToTwentyOneTest(int number)
+        {
+            ToEnglish(number).Should().Be("twenty one");
+        }
+         
+
+        [TestCase(30)]
+        public void Convert30ToThirtyTest(int number)
+        {
+            ToEnglish(number).Should().Be("thirty");
+        }
+
+        [TestCase(35)]
+        public void Convert35ToThirtyFiveTest(int number)
+        {
+            ToEnglish(number).Should().Be("thirty five");
+        }
+
         private string ToEnglish(int number)
         {
-            string text = "";
+            string text = ""; 
+            
+            var numbersUpTo19 = new[] { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+            var numbersFromTen = new[] {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"  };
 
-            if (number == 1)
+            if (number < 20)
             {
-                text = "one";
+                text = numbersUpTo19[number - 1];
             }
-            if (number == 2)
+            else
             {
-                text = "two";
+                text += numbersFromTen[number/10];
+
+                int remain = number % 10;
+
+                if (remain > 0)
+                    text += " " +  numbersUpTo19[remain - 1];
             }
-            if (number == 3)
-            {
-                text = "three";
-            }
+
             return text;
         }
     }
